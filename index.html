@@ -1,60 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DataControl</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro Avançado</title>
 
-  <!-- FavIcon -->
-   <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-  <!-- CSS -->
-  <link rel="stylesheet" href="./css/global.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+
+    <!-- Estilo CSS -->
+    <link rel="stylesheet" href="css/global.css">
+
+    <!-- Biblioteca de icons Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <img src="./assets/logo.png" alt="DataControl">
-        Data Control
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <h1 class="title-header"><i class="ph ph-address-book"></i> Cad-Multi</h1>
 
-  <main>
-    <section id="form">
-      <h1>Data Control - Sistema de Cadastro</h1>
+        <!-- Tema claro ou escuro -->
+        <button id="themeButton" title="Alterar tema">
+            <i class="ph ph-moon"></i>
+        </button>
+    </header>
+    <main>
+        <section id="form-section">
+            <h1 class="title-form" title="Adicione os dados no formulário."><i class="ph ph-form"></i> Sistema de Cadastro</h1>
+            <div id="formContainer">
+                <form id="cadastro-form">
+                    <label for="nome">
+                        <i class="ph ph-user-circle"></i> Nome:
+                    </label>
+                    <input type="text" placeholder="Ex: Jonh Alex" id="nome" required>
 
-      <form id="cadastro-form">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite o nome:" required>
+                    <label for="idade">
+                        <i class="ph ph-calendar"></i> Idade:
+                    </label>
+                    <input type="number" placeholder="Ex: 20" min="1" id="idade" required>
 
-        <label for="idade">Idade</label>
-        <input type="number" id="idade" name="idade" placeholder="Digite a idade:" required>
+                    <label for="email">
+                        <i class="ph ph-envelope-simple"></i> Email:
+                    </label>
+                    <input type="email" placeholder="Ex: seuemail@gmail.com" id="email" required>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Digite o email:" required>
+                    <button type="submit" id="submitButton">
+                        <i class="ph ph-user-plus"></i> Cadastrar
+                    </button>
+                    <!-- Input de capturar ID anônimo -->
+                    <input type="hidden" id="id" value="">
+                </form>
+            </div>
+        </section>
 
-        <button type="submit">Cadastrar</button>
-      </form>
+        <section id="details-section">
+            <h2 class="title-details"><i class="ph ph-list"></i> Cadastros</h2>
+            <div
+                id="listContainer"
+                title="Aqui serão exibidos os cadastros, clique para ver os detalhes."
+            >
+            </div>
+        </section>
 
-      <section id="List-details">
-        <h2>Cadastros</h2>
-
-        <ul id="list-register"></ul>
-      </section>
-    </section>
-  </main>
-
-
-  <!-- JS -->
-  <script src="./js/main.js"></script>
+        <section id="card-details-container" style="display: none;">
+            <div class="card-details"></div>
+        </section>
+    </main>
+    <footer>
+        <div class="div_footer sponsors">
+            <ul>
+                <li>
+                    <a href="https://github.com/sponsors/Jonhvmp" target="_blank" title="Apoie o desenvolvedor">
+                        <i class="ph ph-heart"></i> Apoie o desenvolvedor no GitHub Sponsors <strong>Jonhvmp</strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="div_footer">
+            <ul class="socialLinks">
+                <strong>Redes Sociais:</strong>
+                <li>
+                    <a href="https://github.com/Jonhvmp" target="_blank" title="GitHub">
+                        <i class="ph ph-github-logo"></i> GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/jonhvmp/" target="_blank" title="LinkedIn">
+                        <i class="ph ph-linkedin-logo"></i> LinkedIn
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="./js/main.js" type="module"></script>
 </body>
 </html>
