@@ -67,6 +67,9 @@ export default class CardDetails {
 
         // Garante que o contêiner esteja visível
         container.style.display = 'block';
+
+        // Retorna o cardContainer para manipulação externa
+        return cardContainer;
     }
 
     closeCard() {

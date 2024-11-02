@@ -11,21 +11,32 @@ export default class FormCadastro {
         this.submitButton = document.querySelector('button[type="submit"]');
         this.isEditing = false;
         this.preventSubmit = false; // Flag para evitar submissão duplicada
+        this.isSubmitting = false; // Flag para garantir uma única submissão por vez
 
         console.log('FormCadastro inicializado');
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+
+        // Remove qualquer listener existente e adiciona o submit handler
+        this.form.removeEventListener('submit', this.handleSubmit.bind(this));
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
+        if (this.isSubmitting) {
+            console.log("Submissão já em andamento");
+            return;
+        }
+        this.isSubmitting = true; // Marca a submissão como em andamento
+
         if (this.preventSubmit) {
-            // Evita submissão se a flag estiver ativa
-            console.log("Submissão evitada");
+            console.log("Submissão evitada devido à flag preventSubmit ativa");
+            this.isSubmitting = false;
             return;
         }
 
-        console.log('Evento de submissão do formulário disparado');
+        this.submitButton.disabled = true;
+        this.preventSubmit = true;
 
         const nome = this.nameInput.value.trim();
         const idade = parseInt(this.ageInput.value);
@@ -34,41 +45,55 @@ export default class FormCadastro {
 
         console.log(`Dados do formulário - Nome: ${nome}, Idade: ${idade}, Email: ${email}, ID: ${id}`);
 
-        // Validação dos campos
-        if (!nome || !idade || !email) {
+        if (!nome || isNaN(idade) || !email) {
             alert("Todos os campos são obrigatórios.");
             console.error('Validação falhou - campos faltando');
+            this.submitButton.disabled = false;
+            this.preventSubmit = false;
+            this.isSubmitting = false;
             return;
         }
 
-        // Verifica se estamos editando (ID preenchido) ou criando um novo cadastro
         if (id) {
             console.log('Atualizando cadastro');
             store.updateCadastro(id, { nome, idade, email })
                 .then(() => {
                     console.log('Cadastro atualizado com sucesso');
+                    this.clearFormFields(); // Limpa o formulário sem reset completo
                 })
                 .catch((error) => {
                     console.error('Erro ao atualizar cadastro:', error);
+                    this.submitButton.disabled = false;
+                    this.preventSubmit = false;
+                    this.isSubmitting = false;
                 });
-            this.idInput.value = ''; // Limpa o ID após a atualização
-            this.submitButton.textContent = 'Cadastrar';
         } else {
             console.log('Adicionando novo cadastro');
             store.addCadastro({ nome, idade, email })
                 .then(() => {
                     console.log('Cadastro adicionado com sucesso');
+                    this.clearFormFields(); // Limpa o formulário após criação
                 })
                 .catch((error) => {
                     console.error('Erro ao adicionar cadastro:', error);
+                    this.submitButton.disabled = false;
+                    this.preventSubmit = false;
+                    this.isSubmitting = false;
                 });
         }
+    }
 
+    clearFormFields() {
+        this.nameInput.value = '';
+        this.ageInput.value = '';
+        this.emailInput.value = '';
+        this.idInput.value = '';
+        this.submitButton.textContent = 'Cadastrar';
         this.isEditing = false;
-        this.form.reset();
-        this.preventSubmit = true; // Ativa a flag para evitar nova submissão com dados vazios
-        setTimeout(() => this.preventSubmit = false, 100); // Reseta a flag após um breve delay
-        console.log('Formulário resetado');
+        this.preventSubmit = false;
+        this.isSubmitting = false; // Libera a flag de submissão após limpar o formulário
+        this.submitButton.disabled = false;
+        console.log('Campos do formulário limpos e flags resetadas');
     }
 
     editCadastro(id) {
