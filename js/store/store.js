@@ -23,7 +23,7 @@ export class Store {
           this.db = event.target.result;
           this.dbInitialized = true; // Marca como inicializado
           this.notifyListeners();
-          console.log("Banco de dados inicializado com sucesso.");
+          // console.log("Banco de dados inicializado com sucesso.");
         };
 
         request.onerror = (event) => {
@@ -71,7 +71,7 @@ export class Store {
             Object.assign(data, updatedCadastro);
             store.put(data);
             transaction.oncomplete = () => this.notifyListeners();
-            console.log("Cadastro atualizado com sucesso.");
+            // console.log("Cadastro atualizado com sucesso.");
           }
         };
     }
@@ -82,7 +82,7 @@ export class Store {
         const store = transaction.objectStore(this.storeName);
         store.delete(id);
         transaction.oncomplete = () => this.notifyListeners();
-        console.log("Cadastro Deletado com sucesso.")
+        // console.log("Cadastro Deletado com sucesso.")
     }
 
     async getAllCadastros() {
@@ -93,7 +93,7 @@ export class Store {
           const request = store.getAll();
 
           request.onsuccess = (event) => resolve(event.target.result);
-          console.log(request.onsuccess, "Todos os cadastros puxados com sucesso.")
+          // console.log(request.onsuccess, "Todos os cadastros puxados com sucesso.")
           request.onerror = (event) => reject(event.target.errorCode);
         });
     }
