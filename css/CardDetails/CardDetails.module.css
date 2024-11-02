@@ -1,0 +1,82 @@
+/* CardDetails.module.css */
+
+.card-details {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--card-shadow);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Efeito Hover no Cartão */
+.card-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px var(--card-hover-shadow);
+}
+
+/* Alinhamento dos Botões de Ação */
+.card-details .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Botões de Cartões */
+.card-details .edit-btn, .card-details .delete-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos do Botão de Edição */
+.card-details .edit-btn {
+    background-color: var(--edit-btn-bg);
+}
+
+.card-details .edit-btn:hover {
+    background-color: var(--edit-btn-hover-bg);
+}
+
+/* Estilos do Botão de Exclusão */
+.card-details .delete-btn {
+    background-color: var(--delete-btn-bg);
+}
+
+.card-details .delete-btn:hover {
+    background-color: var(--delete-btn-hover-bg);
+}
+
+/* Estilos do Botão de Fechar */
+.card-details .close-btn {
+    background-color: #3498db;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.card-details .close-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Animação para Cartões */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
