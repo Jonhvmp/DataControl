@@ -1,0 +1,45 @@
+/* ListRegisters.module.css */
+
+.title-details {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#listContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#listContainer div {
+    background-color: var(--form-input-bg);
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px var(--card-shadow);
+    transition: background-color 0.3s;
+}
+
+#listContainer div:hover {
+    background-color: var(--button-hover-background);
+    border: 1px solid #7f8c8d;
+    color: var(--button-text-color);
+}
+
+/* Responsividade para Listagem */
+@media (max-width: 600px) {
+    .title-details {
+        font-size: 27px;
+    }
+
+    #listContainer div {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,206 @@
+/* Importação de Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Variáveis de Tema e Reset */
+:root {
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --header-background: #2c3e50;
+    --header-text-color: #fff;
+    --button-background: #3498db;
+    --button-text-color: #fff;
+    --button-hover-background: #2980b9;
+    --card-background: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.15);
+    --card-hover-shadow: rgba(0, 0, 0, 0.25);
+    --form-input-bg: #ecf0f1;
+    --form-input-focus-bg: #fff;
+    --edit-btn-bg: #f39c12;
+    --edit-btn-hover-bg: #e67e22;
+    --delete-btn-bg: #e74c3c;
+    --delete-btn-hover-bg: #c0392b;
+
+    --placeholder-color: #7f8c8db6;
+}
+
+.dark-theme {
+    --background-color: #2c3e50;
+    --text-color: #f5f7fa;
+    --header-background: #1a252f;
+    --header-text-color: #fff;
+    --button-background: #25b92c;
+    --button-text-color: #fff;
+    --button-hover-background: #277e11c4;
+    --card-background: #1a252f;
+    --card-shadow: rgba(255, 255, 255, 0.1);
+    --card-hover-shadow: rgba(255, 255, 255, 0.2);
+    --form-input-bg: #34495e;
+    --form-input-focus-bg: #2c3e50;
+    --edit-btn-bg: #e67e22;
+    --edit-btn-hover-bg: #d35400;
+    --delete-btn-bg: #c0392b;
+    --delete-btn-hover-bg: #a93226;
+
+    --placeholder-color: #7f8c8db6;
+}
+
+/* Reset e Tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+    transition: var(--background-color) 0.3s, color 0.3s;
+}
+
+/*============== Scrollbar ==============*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--button-background);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--button-hover-background);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/*============== Cabeçalho ==============*/
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-background);
+    color: var(--header-text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    animation: borderLoop 10s infinite;
+}
+
+::placeholder {
+    color: var(--placeholder-color);
+}
+
+.title-header {
+    color: var(--header-text-color);
+    margin: 0;
+}
+
+#themeButton {
+    background: none;
+    border: 1px solid var(--placeholder-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#themeButton:hover {
+    transform: rotate(20deg);
+}
+
+/* Animação para Header */
+@keyframes borderLoop {
+    0%, 50%, 100% { box-shadow: 0 0 0 0 var(--button-background); }
+    25%, 75% { box-shadow: 0 0 0 2px var(--button-hover-background); }
+}
+
+/* Botões Globais */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+}
+
+button:hover {
+    background-color: var(--button-hover-background);
+    transform: scale(1.02);
+}
+
+.ph-moon-stars {
+    font-size: 25px;
+}
+
+/* Responsividade Header */
+@media (max-width: 600px) {
+    .title-header {
+        font-size: 24px;
+    }
+}
+
+/*============== Footer ==============*/
+footer {
+    text-align: center;
+    margin-top: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Centraliza o conteúdo do footer */
+}
+
+footer * {
+    list-style: none;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: 0.2s ease-in-out;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: flex-start; /* Alinha os itens da lista à esquerda */
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sponsors {
+    width: 200px;
+}
+
+footer a:hover {
+    color: var(--button-background);
+}
+
+.socialLinks {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Alinha o conteúdo da socialLinks à esquerda */
+}
+
+.socialLinks li {
+    text-align: left; /* Garante que cada item da lista esteja alinhado à esquerda */
+}
+
+.socialLinks a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 5px 0;
+    text-align: left; /* Garante que o link esteja alinhado à esquerda */
+}
+
+.socialLinks a:hover {
+    color: var(--button-background);
+}
+

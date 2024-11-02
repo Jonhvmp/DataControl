@@ -2,7 +2,6 @@
 import FormCadastro from './components/FormCadastro.js';
 import ListRegisters from './components/ListRegisters.js';
 import { store } from './store/store.js';
-import '../css/global.css';
 
 // Função principal que inicializa a aplicação
 function init() {

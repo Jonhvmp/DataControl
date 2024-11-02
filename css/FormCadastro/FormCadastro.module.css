@@ -1,0 +1,59 @@
+/* FormCadastro.module.css */
+
+/* Formulário */
+.title-form {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#cadastro-form {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px var(--card-shadow);
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+#cadastro-form label {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    color: var(--text-color);
+}
+
+#cadastro-form input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--form-input-bg);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#cadastro-form input:focus {
+    background-color: var(--form-input-focus-bg);
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+/* Responsividade para Formulário */
+@media (max-width: 600px) {
+    .title-form {
+        font-size: 27px;
+    }
+
+    #cadastro-form {
+        padding: 10px;
+    }
+
+    #cadastro-form input {
+        font-size: 14px;
+    }
+}
