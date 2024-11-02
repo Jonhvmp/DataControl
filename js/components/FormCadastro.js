@@ -12,7 +12,7 @@ export default class FormCadastro {
         this.isEditing = false;
         this.preventSubmit = false; // Flag para evitar submissão duplicada
 
-        console.log('FormCadastro initialized');
+        console.log('FormCadastro inicializado');
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
     }
 
@@ -21,46 +21,46 @@ export default class FormCadastro {
 
         if (this.preventSubmit) {
             // Evita submissão se a flag estiver ativa
-            console.log("Submission prevented");
+            console.log("Submissão evitada");
             return;
         }
 
-        console.log('Form submit event triggered');
+        console.log('Evento de submissão do formulário disparado');
 
         const nome = this.nameInput.value.trim();
         const idade = parseInt(this.ageInput.value);
         const email = this.emailInput.value.trim();
         const id = this.idInput.value ? parseInt(this.idInput.value) : null;
 
-        console.log(`Form data - Nome: ${nome}, Idade: ${idade}, Email: ${email}, ID: ${id}`);
+        console.log(`Dados do formulário - Nome: ${nome}, Idade: ${idade}, Email: ${email}, ID: ${id}`);
 
         // Validação dos campos
         if (!nome || !idade || !email) {
             alert("Todos os campos são obrigatórios.");
-            console.error('Validation failed - missing fields');
+            console.error('Validação falhou - campos faltando');
             return;
         }
 
         // Verifica se estamos editando (ID preenchido) ou criando um novo cadastro
         if (id) {
-            console.log('Updating cadastro');
+            console.log('Atualizando cadastro');
             store.updateCadastro(id, { nome, idade, email })
                 .then(() => {
-                    console.log('Cadastro updated successfully');
+                    console.log('Cadastro atualizado com sucesso');
                 })
                 .catch((error) => {
-                    console.error('Error updating cadastro:', error);
+                    console.error('Erro ao atualizar cadastro:', error);
                 });
             this.idInput.value = ''; // Limpa o ID após a atualização
             this.submitButton.textContent = 'Cadastrar';
         } else {
-            console.log('Adding new cadastro');
+            console.log('Adicionando novo cadastro');
             store.addCadastro({ nome, idade, email })
                 .then(() => {
-                    console.log('Cadastro added successfully');
+                    console.log('Cadastro adicionado com sucesso');
                 })
                 .catch((error) => {
-                    console.error('Error adding cadastro:', error);
+                    console.error('Erro ao adicionar cadastro:', error);
                 });
         }
 
@@ -68,11 +68,11 @@ export default class FormCadastro {
         this.form.reset();
         this.preventSubmit = true; // Ativa a flag para evitar nova submissão com dados vazios
         setTimeout(() => this.preventSubmit = false, 100); // Reseta a flag após um breve delay
-        console.log('Form reset');
+        console.log('Formulário resetado');
     }
 
     editCadastro(id) {
-        console.log(`Editing cadastro with ID: ${id}`);
+        console.log(`Editando cadastro com ID: ${id}`);
         store.getCadastroById(id)
             .then((cadastro) => {
                 if (cadastro) {
@@ -84,13 +84,13 @@ export default class FormCadastro {
 
                     this.isEditing = true;
                     this.submitButton.textContent = 'Atualizar';
-                    console.log('Cadastro data loaded into form');
+                    console.log('Dados do cadastro carregados no formulário');
                 } else {
-                    console.error('Cadastro not found');
+                    console.error('Cadastro não encontrado');
                 }
             })
             .catch((error) => {
-                console.error('Error fetching cadastro:', error);
+                console.error('Erro ao buscar cadastro:', error);
             });
     }
 }
