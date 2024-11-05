@@ -1,5 +1,31 @@
 /* FormCadastro.module.css */
 
+/* Caixa de erro */
+.error-message {
+    color: var(--error-message-text);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.error-message p {
+    font-size: 16px;
+    animation: shake 0.5s;
+    border: 1px solid var(--error-message-border);
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--error-message-bg);
+    box-shadow: 0 0 10px var(--error-message-box-shadow);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
 /* Formulário */
 .title-form {
     text-align: center;

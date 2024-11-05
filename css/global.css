@@ -19,8 +19,11 @@
     --edit-btn-hover-bg: #e67e22;
     --delete-btn-bg: #e74c3c;
     --delete-btn-hover-bg: #c0392b;
-
     --placeholder-color: #7f8c8db6;
+    --error-message-bg: rgba(255, 0, 0, 0.1);
+    --error-message-border: red;
+    --error-message-box-shadow: rgba(255, 0, 0, 0.5);
+    --error-message-text: red;
 }
 
 .dark-theme {
@@ -40,8 +43,11 @@
     --edit-btn-hover-bg: #d35400;
     --delete-btn-bg: #c0392b;
     --delete-btn-hover-bg: #a93226;
-
     --placeholder-color: #7f8c8db6;
+    --error-message-bg: rgba(255, 0, 0, 0.1);
+    --error-message-border: red;
+    --error-message-box-shadow: rgba(255, 0, 0, 0.5);
+    --error-message-text: red;
 }
 
 /* Reset e Tipografia */
@@ -221,4 +227,3 @@ footer a:hover {
 .socialLinks a:hover {
     color: var(--button-background);
 }
-
