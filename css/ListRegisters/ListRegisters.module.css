@@ -24,13 +24,21 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 1px 3px var(--card-shadow);
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
 }
 
 #listContainer div:hover {
     background-color: var(--button-hover-background);
     border: 1px solid #7f8c8d;
     color: var(--button-text-color);
+    transform: rotateY(10deg) scale(1.05);
+    box-shadow: 0 5px 15px var(--card-shadow);
+}
+
+#listContainer div:active {
+    transform: rotateY(-10deg) scale(0.95);
+    box-shadow: 0 2px 5px var(--card-shadow);
 }
 
 /* Responsividade para Listagem */
