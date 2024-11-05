@@ -11,6 +11,8 @@
     margin: 0 auto;
     padding: 10px;
     cursor: pointer;
+    user-select: none;
+    border-radius: 10px;
 }
 
 #listContainer div {
