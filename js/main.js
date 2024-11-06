@@ -118,10 +118,10 @@ async function exportToCSV() {
     </html>`;
 
     // Converte o conteúdo para um blob em formato HTML
-    const blob = new Blob([csvContent], { type: "application/vnd.ms-excel" });
+    const blob = new Blob([csvContent], { type: "text/html;charset=utf-8;" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "cadastros.html"; // Alterado para HTML para preservar a estrutura visual
+    link.download = "cadastros.html"; // arquivo fixado como .html
     link.style.display = "none";
 
     document.body.appendChild(link);
