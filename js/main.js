@@ -61,7 +61,7 @@ function loadTheme() {
 // Evento para o botão de tema
 document.getElementById('themeButton').addEventListener('click', toggleTheme);
 
-// função de exportar os dados em csv
+// Exportar os dados em csv
 function displayExportMessage(message, isError = true) {
     const exportMessageDiv = document.getElementById('exportMessage');
     exportMessageDiv.innerHTML = `<p>${message}</p>`;
@@ -82,18 +82,46 @@ async function exportToCSV() {
         return;
     }
 
-    const header = ["Nome", "Idade", "Email"];
-    const rows = cadastros.map(cadastro => [cadastro.nome, cadastro.idade, cadastro.email]);
+    // Cria a estrutura inicial em HTML para o CSV
+    let csvContent = `
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid #dddddd; padding: 8px; text-align: left; }
+            tr:nth-child(even) { background-color: #f2f2f2; } /* Estilo zebra */
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Email</th>
+            </tr>`;
 
-    let csvContent = header.join(",") + "\n";
-    rows.forEach(row => {
-        csvContent += row.join(",") + "\n";
+    // Adiciona as linhas dos cadastros
+    cadastros.forEach((cadastro, index) => {
+        csvContent += `
+            <tr>
+                <td>${cadastro.nome}</td>
+                <td>${cadastro.idade}</td>
+                <td>${cadastro.email}</td>
+            </tr>`;
     });
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    // Fecha a estrutura HTML
+    csvContent += `
+        </table>
+    </body>
+    </html>`;
+
+    // Converte o conteúdo para um blob em formato HTML
+    const blob = new Blob([csvContent], { type: "application/vnd.ms-excel" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "cadastros.csv";
+    link.download = "cadastros.html"; // Alterado para HTML para preservar a estrutura visual
     link.style.display = "none";
 
     document.body.appendChild(link);
