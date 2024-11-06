@@ -58,8 +58,53 @@ function loadTheme() {
     }
 }
 
-// Adiciona evento para o botão de tema
+// Evento para o botão de tema
 document.getElementById('themeButton').addEventListener('click', toggleTheme);
+
+// função de exportar os dados em csv
+function displayExportMessage(message, isError = true) {
+    const exportMessageDiv = document.getElementById('exportMessage');
+    exportMessageDiv.innerHTML = `<p>${message}</p>`;
+    exportMessageDiv.style.color = isError ? 'red' : 'green'; // Vermelho para erros, verde para sucesso
+    exportMessageDiv.style.border = isError ? '1px solid red' : '1px solid green';
+    exportMessageDiv.style.display = 'flex';
+
+    // Oculta a mensagem após alguns segundos
+    setTimeout(() => {
+        exportMessageDiv.style.display = 'none';
+    }, 3000);
+}
+
+async function exportToCSV() {
+    const cadastros = await store.getAllCadastros();
+    if (cadastros.length === 0) {
+        displayExportMessage("Não há dados para exportar.", true);
+        return;
+    }
+
+    const header = ["Nome", "Idade", "Email"];
+    const rows = cadastros.map(cadastro => [cadastro.nome, cadastro.idade, cadastro.email]);
+
+    let csvContent = header.join(",") + "\n";
+    rows.forEach(row => {
+        csvContent += row.join(",") + "\n";
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "cadastros.csv";
+    link.style.display = "none";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    displayExportMessage("Dados exportados com sucesso!", false);
+}
+
+// Evento no botão de exportar
+document.getElementById('exportButton').addEventListener('click', exportToCSV);
 
 // Quando o DOM estiver carregado, inicializa a aplicação
 document.addEventListener('DOMContentLoaded', () => {

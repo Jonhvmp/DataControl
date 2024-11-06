@@ -53,3 +53,27 @@
         font-size: 16px;
     }
 }
+
+#export {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .export-message {
+        align-items: center;
+        justify-content: center;
+        margin-top: 17px;
+        border-radius: 10px;
+        cursor: not-allowed;
+        user-select: none;
+        box-shadow: 0 2px 4px var(--card-shadow);
+        background-color: var(--card-background);
+    }
+        .export-message p {
+            font-size: 16px;
+            animation: shake 0.5s;
+            padding: 10px;
+            border-radius: 5px;
+    }
