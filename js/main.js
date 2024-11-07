@@ -28,18 +28,18 @@ function toggleTheme() {
         body.classList.add('light-theme');
         localStorage.setItem('theme', 'light');
 
-        // Atualiza o ícone para o sol (indicando modo claro)
-        themeButtonIcon.classList.remove('ph-moon');
-        themeButtonIcon.classList.add('ph-sun');
+        // Atualiza o ícone para a lua
+        themeButtonIcon.classList.remove('ph-sun');
+        themeButtonIcon.classList.add('ph-moon');
     } else {
         // Muda para tema escuro
         body.classList.remove('light-theme');
         body.classList.add('dark-theme');
         localStorage.setItem('theme', 'dark');
 
-        // Atualiza o ícone para a lua (modo escuro)
-        themeButtonIcon.classList.remove('ph-sun');
-        themeButtonIcon.classList.add('ph-moon');
+        // Atualiza o ícone para o sol
+        themeButtonIcon.classList.remove('ph-moon');
+        themeButtonIcon.classList.add('ph-sun');
     }
 }
 
